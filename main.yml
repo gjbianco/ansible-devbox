@@ -5,10 +5,6 @@
   vars_files:
     - vars.yml
   tasks:
-    # - name: EPEL enabled
-    #   dnf:
-    #     name: epel-release
-    #     state: present
     - name: system up to date
       dnf: name=* state=latest
     - name: install packages
@@ -37,10 +33,3 @@
     - vars.yml
   roles:
     - geerlingguy.dotfiles
-
-# - hosts: all
-#   become: yes
-#   become_user: "{{ username }}"
-#   gather_facts: no
-#   tasks:
-#     - name: SSH keys created
