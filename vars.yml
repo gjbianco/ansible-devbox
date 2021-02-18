@@ -1,24 +1,24 @@
 username: guy
 
 packages:
-  # - alacritty
+  - alacritty
   - ansible
   - fish
   - git
+  - gnome-tweaks
   - golang
+  - gparted
   - htop
+  - irssi
   # - lf
   - mosh
   - neovim
   - nodejs
   - podman
-  # - ranger
+  - ranger
   - screen
   - tmux
   - vim
-
-go_packages:
-  - lf
 
 # timezone: America/New_York
 

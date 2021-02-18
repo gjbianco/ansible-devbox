@@ -5,11 +5,10 @@
   vars_files:
     - vars.yml
   tasks:
-    - name: EPEL enabled
-      dnf:
-        name: epel-release
-        state: present
-        disable_gpg_check: yes
+    # - name: EPEL enabled
+    #   dnf:
+    #     name: epel-release
+    #     state: present
     - name: system up to date
       dnf: name=* state=latest
     - name: install packages
@@ -29,14 +28,6 @@
         dest: /usr/bin
         remote_src: yes
         mode: 0755
-
-- hosts: all
-  become: yes
-  become_user: "{{ username }}"
-  gather_facts: no
-  tasks:
-    - debug:
-        msg: "username: {{username}}"
 
 - hosts: all
   become: yes
