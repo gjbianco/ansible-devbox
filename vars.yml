@@ -1,0 +1,41 @@
+username: guy
+
+packages:
+  # - alacritty
+  - ansible
+  - fish
+  - git
+  - golang
+  - htop
+  # - lf
+  - mosh
+  - neovim
+  - nodejs
+  - podman
+  # - ranger
+  - screen
+  - tmux
+  - vim
+
+go_packages:
+  - lf
+
+# timezone: America/New_York
+
+nvm_version: 0.33.1
+
+# dotfiles
+dotfiles_repo: "https://github.com/gjbianco/dotfiles"
+dotfiles_repo_local_destination: "~/bin/dotfiles"
+dotfiles_files:
+  - .config/fish
+  - .config/lf
+  - .config/nvim
+  - .alacritty.yml
+  - .ansible.cfg
+  - .editorconfig
+  - .gitconfig
+  - .gitignore_global
+  - .tmux.conf
+  - .vimrc
+    

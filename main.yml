@@ -1,0 +1,55 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: EPEL enabled
+      dnf:
+        name: epel-release
+        state: present
+        disable_gpg_check: yes
+    - name: system up to date
+      dnf: name=* state=latest
+    - name: install packages
+      dnf:
+        name: "{{ packages }}"
+        state: present
+
+- hosts: all
+  become: yes
+  vars:
+    lf_version: r20
+    lf_arch: linux-amd64
+  tasks:
+    - name: lf installed
+      unarchive:
+        src: "https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/lf-{{ lf_arch }}.tar.gz"
+        dest: /usr/bin
+        remote_src: yes
+        mode: 0755
+
+- hosts: all
+  become: yes
+  become_user: "{{ username }}"
+  gather_facts: no
+  tasks:
+    - debug:
+        msg: "username: {{username}}"
+
+- hosts: all
+  become: yes
+  become_user: "{{ username }}"
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  roles:
+    - geerlingguy.dotfiles
+
+# - hosts: all
+#   become: yes
+#   become_user: "{{ username }}"
+#   gather_facts: no
+#   tasks:
+#     - name: SSH keys created

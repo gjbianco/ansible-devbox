@@ -1,0 +1,20 @@
+= ansible-devbox
+
+Ansible playbooks to manage my own personal devbox.
+Currently used for `Fedora Workstation 33`.
+
+Does the following:
+
+- System initialization tasks
+  - Enables EPEL
+  - Updates all packages
+  - Installs useful packages
+  - Installs https://github.com/gokcehan/lf[`lf` file navigator]
+- Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]
+
+== Usage
+
+1. Create an `inventory` file with the host(s) to configure.
+1. Update `vars.yml` with relevant settings (e.g. `username`, and `dotfiles_repo`)
+1. Install roles with `ansible-galaxy install -r requirements.yml`
+1. Run `ansible-playbook main.yml` and provide sudo password.
