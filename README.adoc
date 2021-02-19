@@ -7,10 +7,10 @@ Does the following:
 
 - System initialization tasks
   - Enables EPEL
-  - Updates all packages
+  - Updates all packages (tag: `update`)
   - Installs useful packages
   - Installs https://github.com/gokcehan/lf[`lf` file navigator]
-- Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]
+- Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles] (tag: `dotfiles`)
 
 == Usage
 
@@ -18,3 +18,11 @@ Does the following:
 1. Update `vars.yml` with relevant settings (e.g. `username`, and `dotfiles_repo`)
 1. Install roles with `ansible-galaxy install -r requirements.yml`
 1. Run `ansible-playbook main.yml` and provide sudo password.
+
+Any task with a tag does not run by default (i.e. also tagged `never`).
+In order to run these tasks, supply their tag.
+e.g. the following would include a system update:
+
+```
+ansible-playbook main.yml --tags update
+```
