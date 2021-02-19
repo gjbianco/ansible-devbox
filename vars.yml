@@ -6,6 +6,7 @@ lf_arch: linux-amd64
 packages:
   - alacritty
   - ansible
+  - brightnessctl
   - fish
   - git
   - gnome-tweaks
