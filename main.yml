@@ -1,5 +1,16 @@
 ---
-- name: system init
+- name: rpmfusion enabled (https://rpmfusion.org/Configuration)
+  tags: [rpmfusion, always]
+  hosts: all
+  become: yes
+  tasks:
+    - name: repo added
+      include_tasks: rpmfusion_tasks.yml
+      loop:
+        - free
+        - nonfree
+
+- name: system initialized
   hosts: all
   become: yes
   gather_facts: no
@@ -8,9 +19,14 @@
     - name: system up to date
       tags: [update, never]
       dnf: name=* state=latest update_cache=yes
-    - name: install packages
+    - name: packages installed
       dnf:
         name: "{{ packages }}"
+        state: present
+    - name: rpmfusion packages installed
+      tags: [rpmfusion, always]
+      dnf:
+        name: "{{ rpmfusion_packages }}"
         state: present
     - name: lf installed
       unarchive:
@@ -46,7 +62,7 @@
         state: present
         update_cache: yes
 
-- name: dotfiles linked
+- name: dotfiles symlinked
   hosts: all
   become: yes
   become_user: "{{ username }}"

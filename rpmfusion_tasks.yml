@@ -1,0 +1,15 @@
+---
+- name: gpg key uploaded
+  copy:
+    # NOTE this key is specific to F33 ("2020")
+    src: RPM-GPG-KEY-rpmfusion-{{ item }}-fedora-2020
+    dest: /tmp
+- name: gpg key imported
+  rpm_key:
+    state: present
+    key: /tmp/RPM-GPG-KEY-rpmfusion-{{ item }}-fedora-2020
+- name: repo installed
+  dnf:
+    state: present
+    name:
+      - https://mirrors.rpmfusion.org/{{ item }}/fedora/rpmfusion-{{ item }}-release-{{ ansible_distribution_major_version }}.noarch.rpm

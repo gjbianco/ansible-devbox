@@ -24,6 +24,9 @@ packages:
   - tmux
   - vim
 
+rpmfusion_packages:
+  - discord
+
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
 dotfiles_files:

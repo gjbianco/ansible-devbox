@@ -5,10 +5,13 @@ Currently used for `Fedora Workstation 33`.
 
 Does the following:
 
+- Enables https://rpmfusion.org[RPMFusion] (tag: `rpmfusion`)
+  - Free
+  - Non-free
 - System initialization tasks
   - Enables EPEL
   - Updates all packages† (tag: `update`)
-  - Installs useful packages
+  - Installs useful packages (see `vars.yml`)
   - Installs https://github.com/gokcehan/lf[`lf` file navigator]
   - Installs https://support.1password.com/getting-started-linux/[1password] (tag: `1password`)
 - Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]† (tag: `dotfiles`)
@@ -27,3 +30,18 @@ e.g. the following would include a system update and link dotfiles:
 ```
 ansible-playbook main.yml --tags update,dotfiles
 ```
+
+You can also use tags to disable features.
+e.g. the follwoing would skip enabling RPMFusion:
+
+```
+ansible-playbook main.yml --skip-tags rpmfusion
+```
+
+NOTE: Skipping a tag will not undo its effects from a previous run.
+e.g. skipping RPMFusion will not remove it (even if this playbook was used to enable it in the first place).
+
+== Notes/Caveats
+
+Currently, the RPMFusion keys are specific to Fedora 33.
+Other versions will need to be updated in `rpmfusion_tasks.yml` based on URLs from https://rpmfusion.org/keys .
