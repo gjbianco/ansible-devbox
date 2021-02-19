@@ -1,5 +1,8 @@
 username: guy
 
+lf_version: r20
+lf_arch: linux-amd64
+
 packages:
   - alacritty
   - ansible
@@ -11,7 +14,6 @@ packages:
   - htop
   - httpie
   - irssi
-  # - lf
   - mosh
   - neovim
   - nodejs
@@ -21,14 +23,6 @@ packages:
   - tmux
   - vim
 
-lf_version: r20
-lf_arch: linux-amd64
-
-# timezone: America/New_York
-
-nvm_version: 0.33.1
-
-# dotfiles
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
 dotfiles_files:
