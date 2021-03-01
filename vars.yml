@@ -1,4 +1,7 @@
 username: guy
+home_directories:
+  - bin
+  - code
 
 lf_version: r20
 lf_arch: linux-amd64

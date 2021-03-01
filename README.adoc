@@ -12,7 +12,10 @@ Currently used for `Fedora Workstation 33`.
 ** Updates all packages† (tag: `update`)
 ** Installs useful packages (see `vars.yml`)
 ** Installs https://github.com/gokcehan/lf[`lf` file navigator]
-** Installs https://support.1password.com/getting-started-linux/[1password] (tag: `1password`)
+** Installs https://support.1password.com/getting-started-linux/[1password]† (tag: `1password`)
+* Initializes user's home directory (tag: `home`)
+** Adds directories (e.g. `~/bin` and `~/code`)
+** Installs the https://bitwarden.com/help/article/cli/[Bitwarden CLI]† (tag: `bitwarden`)
 * Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]† (tag: `dotfiles`)
 
 NOTE: `†` indicates it will not run by default.
