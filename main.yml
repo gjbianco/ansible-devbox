@@ -67,6 +67,22 @@
         state: present
         update_cache: yes
 
+- name: bluejeans installed
+  hosts: all
+  become: yes
+  gather_facts: no
+  vars_files: [vars.yml]
+  tags: [bluejeans, always]
+  tasks:
+    - name: key imported
+      rpm_key:
+        state: present
+        key: https://swdl.bluejeans.com/desktop-app/linux/bluejeans_pubkey.gpg
+    - name: package installed
+      dnf:
+        name: https://swdl.bluejeans.com/desktop-app/linux/{{ bluejeans_version }}/BlueJeans_{{ bluejeans_version }}.1.rpm
+        state: present
+
 - name: /home initialized
   hosts: all
   tags: [home, always]

@@ -3,6 +3,8 @@ home_directories:
   - bin
   - code
 
+bluejeans_version: 2.21.2
+
 lf_version: r20
 lf_arch: linux-amd64
 
