@@ -16,6 +16,7 @@ packages:
   - bat
   - brightnessctl
   - fish
+  - gimp
   - git
   - gnome-tweaks
   - golang
@@ -25,6 +26,7 @@ packages:
   - irssi
   - lm_sensors
   - mosh
+  - krita
   - neovim
   - nodejs
   - podman
