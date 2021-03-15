@@ -13,6 +13,7 @@ Currently used for `Fedora Workstation 33`.
 ** Installs useful packages (see `vars.yml`)
 ** Installs https://github.com/gokcehan/lf[`lf` file navigator]
 ** Installs https://www.bluejeans.com/downloads[BlueJeans native app] (tag: `bluejeans`)
+** Installs https://neomutt.org/[NeoMutt email client] using COPR (tag: `neomutt`)
 ** Installs https://support.1password.com/getting-started-linux/[1password]† (tag: `1password`)
 * Initializes user's home directory (tag: `home`)
 ** Adds directories (e.g. `~/bin` and `~/code`)
@@ -42,6 +43,9 @@ e.g. the follwoing would skip enabling RPMFusion:
 ```
 ansible-playbook main.yml --skip-tags rpmfusion
 ```
+
+Some packages require adding COPR repositories.
+These are tagged with `copr` and can be skipped by skipping this tag.
 
 NOTE: Skipping a tag will not undo its effects from a previous run.
 e.g. skipping RPMFusion will not remove it (even if this playbook was used to enable it in the first place).

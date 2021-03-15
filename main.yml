@@ -83,6 +83,22 @@
         name: https://swdl.bluejeans.com/desktop-app/linux/{{ bluejeans_version }}/BlueJeans_{{ bluejeans_version }}.1.rpm
         state: present
 
+- name: neomutt installed
+  hosts: all
+  become: yes
+  gather_facts: no
+  tags: [neomutt, copr, always]
+  tasks:
+    - name: COPR repo enabled
+      command:
+        cmd: dnf copr enable -y flatcap/neomutt
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:flatcap:neomutt.repo
+        warn: false # dnf module does not suppor COPR
+    - name: neomutt package installed
+      dnf:
+        name: neomutt
+        state: present
+
 - name: /home initialized
   hosts: all
   tags: [home, always]
