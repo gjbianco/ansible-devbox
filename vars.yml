@@ -6,9 +6,12 @@ home_directories:
 lf_version: r20
 lf_arch: linux-amd64
 
+cmdocker_version: 2021-03-08_1041
+
 packages:
   - alacritty
   - ansible
+  - bat
   - brightnessctl
   - fish
   - git
@@ -18,17 +21,27 @@ packages:
   - htop
   - httpie
   - irssi
+  - lm_sensors
   - mosh
   - neovim
   - nodejs
   - podman
+  - pre-commit
   - ranger
   - screen
+  - sway
   - tmux
   - vim
+  # probably eventually pick one
+  - geary
+  - evolution
+  - thunderbird
+  - libappindicator-gtk3 # needed for discord?
 
 rpmfusion_packages:
   - discord
+  - librtmp # needed for Loop Hero
+  - steam
 
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
