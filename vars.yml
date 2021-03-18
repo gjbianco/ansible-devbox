@@ -33,9 +33,20 @@ packages:
   - pre-commit
   - ranger
   - screen
-  - sway
   - tmux
   - vim
+  - w3m
+  - wl-clipboard
+
+  # sway wm
+  - dunst
+  - sway
+  - swayidle
+  - swaylock
+  - waybar
+  - nm-connection-editor
+  - msimonson-anonymouspro-fonts
+
   # probably eventually pick one
   - geary
   - evolution
@@ -50,9 +61,12 @@ rpmfusion_packages:
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
 dotfiles_files:
+  - .config/bat
   - .config/fish
   - .config/lf
+  - .config/neomutt
   - .config/nvim
+  - .config/sway
   - .alacritty.yml
   - .ansible.cfg
   - .editorconfig
