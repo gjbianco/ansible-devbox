@@ -10,11 +10,16 @@ lf_arch: linux-amd64
 
 cmdocker_version: 2021-03-08_1041
 
+copr_repos:
+  - [flatcap, neomutt]       # flatcap/neomutt
+  - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
+
 packages:
   - alacritty
   - ansible
   - bat
   - brightnessctl
+  - calcurse
   - fish
   - gimp
   - git
@@ -26,6 +31,7 @@ packages:
   - irssi
   - lm_sensors
   - mosh
+  - mpv
   - krita
   - neovim
   - nodejs
@@ -37,6 +43,7 @@ packages:
   - vim
   - w3m
   - wl-clipboard
+  - youtube-dl
 
   # sway wm
   - dunst
@@ -52,6 +59,10 @@ packages:
   - evolution
   - thunderbird
   - libappindicator-gtk3 # needed for discord?
+
+  # copr packages
+  - neomutt
+  - youtube-viewer
 
 rpmfusion_packages:
   - discord

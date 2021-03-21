@@ -16,6 +16,12 @@
   gather_facts: no
   vars_files: [vars.yml]
   tasks:
+    - name: COPR repos enabled
+      command:
+        cmd: dnf copr enable -y {{ item[0] }}/{{ item[1] }}
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:{{ item[0] }}:{{ item[1] }}.repo
+        warn: false # dnf module does not support COPR
+      loop: "{{ copr_repos }}"
     - name: system up to date
       tags: [update, never]
       dnf: name=* state=latest update_cache=yes
@@ -39,6 +45,11 @@
         url: https://github.com/alexpdp7/cmdocker/releases/download/release_{{ cmdocker_version }}/cmdocker-linux
         dest: /home/{{ username }}/bin/cmdocker
         mode: 0755
+    - name: unnecessary services disabled
+      service:
+        name: packagekit
+        state: stopped
+        enabled: no
 
 - name: 1password installed (https://support.1password.com/getting-started-linux/)
   hosts: all
@@ -81,22 +92,6 @@
     - name: package installed
       dnf:
         name: https://swdl.bluejeans.com/desktop-app/linux/{{ bluejeans_version }}/BlueJeans_{{ bluejeans_version }}.1.rpm
-        state: present
-
-- name: neomutt installed
-  hosts: all
-  become: yes
-  gather_facts: no
-  tags: [neomutt, copr, always]
-  tasks:
-    - name: COPR repo enabled
-      command:
-        cmd: dnf copr enable -y flatcap/neomutt
-        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:flatcap:neomutt.repo
-        warn: false # dnf module does not suppor COPR
-    - name: neomutt package installed
-      dnf:
-        name: neomutt
         state: present
 
 - name: /home initialized
