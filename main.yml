@@ -40,11 +40,6 @@
         dest: /usr/bin
         remote_src: yes
         mode: 0755
-    - name: cmdocker installed
-      get_url:
-        url: https://github.com/alexpdp7/cmdocker/releases/download/release_{{ cmdocker_version }}/cmdocker-linux
-        dest: /home/{{ username }}/bin/cmdocker
-        mode: 0755
     - name: unnecessary services disabled
       service:
         name: "{{ item }}"
