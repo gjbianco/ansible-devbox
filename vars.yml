@@ -39,11 +39,15 @@ packages:
   - pre-commit
   - ranger
   - screen
+  - sc
   - tmux
   - vim
   - w3m
   - wl-clipboard
   - youtube-dl
+  - zathura
+  - zathura-plugins-all
+  - zathura-fish-completion
 
   # sway wm
   - dunst
