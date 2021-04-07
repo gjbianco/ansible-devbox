@@ -4,21 +4,21 @@ Ansible playbooks to manage my own personal devbox.
 Currently used for `Fedora Workstation 33`.
 
 .Tasks:
-* Enables https://rpmfusion.org[RPMFusion] (tag: `rpmfusion`)
+* Enables https://rpmfusion.org[RPMFusion]
 ** Free
 ** Non-free
 * System initialization tasks
 ** Enables EPEL
-** Updates all packages† (tag: `update`)
+** Updates all packages†
 ** Enables COPR repositories
 ** Installs useful packages (see `vars.yml`)
 ** Installs https://github.com/gokcehan/lf[`lf` file navigator]
-** Installs https://www.bluejeans.com/downloads[BlueJeans native app] (tag: `bluejeans`)
-** Installs https://support.1password.com/getting-started-linux/[1password]† (tag: `1password`)
-* Initializes user's home directory (tag: `home`)
+** Installs https://www.bluejeans.com/downloads[BlueJeans native app]
+** Installs https://support.1password.com/getting-started-linux/[1password]†
+* Initializes user's home directory
 ** Adds directories (e.g. `~/bin` and `~/code`)
-** Installs the https://bitwarden.com/help/article/cli/[Bitwarden CLI]† (tag: `bitwarden`)
-* Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]† (tag: `dotfiles`)
+** Installs the https://bitwarden.com/help/article/cli/[Bitwarden CLI]†
+* Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]†
 
 NOTE: `†` indicates it will not run by default.
 
@@ -29,26 +29,8 @@ NOTE: `†` indicates it will not run by default.
 1. Install roles with `ansible-galaxy install -r requirements.yml`
 1. Run `ansible-playbook main.yml` and provide sudo password.
 
-Any task marked † does not run by default (i.e. tagged `never`).
-In order to run these tasks, supply their tag.
-e.g. the following would include a system update and link dotfiles:
-
-```
-ansible-playbook main.yml --tags update,dotfiles
-```
-
-You can also use tags to disable features.
-e.g. the follwoing would skip enabling RPMFusion:
-
-```
-ansible-playbook main.yml --skip-tags rpmfusion
-```
-
 Some packages require adding COPR repositories.
 Be sure to add any required repositories to the list.
-
-NOTE: Skipping a tag will not undo its effects from a previous run.
-e.g. skipping RPMFusion will not remove it (even if this playbook was used to enable it in the first place).
 
 == Caveats
 

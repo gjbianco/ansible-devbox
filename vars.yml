@@ -17,9 +17,11 @@ copr_repos:
 packages:
   - alacritty
   - ansible
-  - bat
+  - bat # better cat
   - brightnessctl
   - calcurse
+  - darktable # FOSS lightroom
+  - darktable-tools-noise
   - fish
   - gimp
   - git
@@ -31,38 +33,44 @@ packages:
   - irssi
   - lm_sensors
   - mosh
-  - mpv
-  - krita
+  - mpv # video player
+  - krita # painting program
   - neovim
   - nodejs
+  - pamix # pulseaudio CLI mixer
   - podman
   - pre-commit
   - ranger
   - screen
-  - sc
+  - sc # CLI spreadsheets
   - tmux
+  - util-linux-user # provides chsh
   - vim
   - w3m
   - wl-clipboard
   - youtube-dl
-  - zathura
+  - zathura # pdf viewer
   - zathura-plugins-all
   - zathura-fish-completion
+  - libappindicator-gtk3 # needed for discord?
+
+  - retroarch
+  - mednafen
 
   # sway wm
-  - dunst
+  - dunst # notifications
   - sway
   - swayidle
   - swaylock
   - waybar
   - nm-connection-editor
   - msimonson-anonymouspro-fonts
+  - squeekboard # OSK
 
   # probably eventually pick one
   - geary
   - evolution
   - thunderbird
-  - libappindicator-gtk3 # needed for discord?
 
   # copr packages
   - neomutt
@@ -79,9 +87,10 @@ dotfiles_files:
   - .config/bat
   - .config/fish
   - .config/lf
-  - .config/neomutt
+  # - .config/neomutt
   - .config/nvim
   - .config/sway
+  - .config/waybar
   - .alacritty.yml
   - .ansible.cfg
   - .editorconfig
