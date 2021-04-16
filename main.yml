@@ -106,6 +106,20 @@
         remote_src: yes
         mode: +x
 
+- name: git repos cloned
+  hosts: all
+  become: yes
+  become_user: "{{ username }}"
+  gather_facts: no
+  vars_files: [vars.yml]
+  tasks:
+    - name: git repos cloned
+      git:
+        dest: /home/{{ username }}/code/
+        repo: git@github.com:{{ item }}.git
+        accept_hostkey: yes
+      loop: "{{ git_repos }}"
+
 - name: dotfiles symlinked
   hosts: all
   become: yes
