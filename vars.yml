@@ -62,6 +62,7 @@ packages:
   - nodejs
   - pamix # pulseaudio CLI mixer
   - ranger
+  - nnn
   - screen
   - sc # CLI spreadsheets
   - tmux
