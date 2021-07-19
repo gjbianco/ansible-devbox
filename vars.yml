@@ -29,6 +29,7 @@ packages:
   - darktable # FOSS lightroom
   - darktable-tools-noise
   - wl-clipboard
+  - dnf-plugins-core # needed for brave
 
   # sway wm
   - dunst # notifications

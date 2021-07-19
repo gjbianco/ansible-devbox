@@ -23,6 +23,10 @@
       loop: "{{ copr_repos }}"
     - name: system up to date
       dnf: name=* state=latest update_cache=yes
+    - name: unwanted packages removed
+      dnf:
+        name: fedora-chromium-config
+        state: absent
     - name: packages installed
       dnf:
         name: "{{ packages }}"
@@ -37,13 +41,13 @@
         dest: /usr/bin
         remote_src: yes
         mode: 0755
-    # - name: user created
-    #   user:
-    #     name: "{{ username }}"
-    #     state: present
-    #     shell: /usr/bin/fish
-    #     generate_ssh_key: yes
-    #     groups: wheel
+    - name: user created
+      user:
+        name: "{{ username }}"
+        state: present
+        shell: /usr/bin/fish
+        generate_ssh_key: yes
+        groups: wheel
     - name: unnecessary services disabled
       service:
         name: "{{ item }}"
@@ -52,6 +56,27 @@
       loop:
         - packagekit
         - raid-check.timer
+
+- name: brave browser installed
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: brave key added
+      rpm_key:
+        state: present
+        key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+    # TODO fix once feature added for dnf module: https://github.com/ansible/ansible/issues/46963
+    - name: brave repo installed
+      command:
+        cmd: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+        warn: false
+      args:
+        creates: /etc/yum.repos.d/brave-browser-rpm-release.s3.brave.com_x86_64_.repo
+    - name: brave package installed
+      dnf:
+        state: present
+        name: brave-browser
 
 - name: 1password installed (https://support.1password.com/getting-started-linux/)
   hosts: all
