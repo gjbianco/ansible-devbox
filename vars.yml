@@ -3,45 +3,117 @@ home_directories:
   - bin
   - code
 
+bluejeans_version: 2.21.2
+
 lf_version: r20
 lf_arch: linux-amd64
+
+cmdocker_version: 2021-03-08_1041
+
+copr_repos:
+  - [flatcap, neomutt]       # flatcap/neomutt
+  - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
 
 packages:
   # headed machine
   - alacritty
   # - brightnessctl
+  # - cool-retro-term
+  # - krita # painting program
+  - gimp
   - gnome-tweaks
   - gparted
-  - sway
+  - mpv # video player
+  - firefox
+  # - firefox-wayland
+  - darktable # FOSS lightroom
+  - darktable-tools-noise
+  - wl-clipboard
 
+  # sway wm
+  - dunst # notifications
+  - sway
+  - swayidle
+  - swaylock
+  - waybar
+  - nm-connection-editor
+  - msimonson-anonymouspro-fonts
+  - squeekboard # OSK
+  # - xdg-desktop-portal-wlr # for screenshare?
+
+  # work
+  - pre-commit
   - ansible
+  - podman
+  - asciidoctor
+
   - bat
+  - hugo
+  - calcurse
   - fish
   - git
   - golang
-  - htop
   - httpie
   - hwinfo
   - irssi
+  - lm_sensors
   - mosh
   - neovim
   - nodejs
-  - podman
+  - pamix # pulseaudio CLI mixer
   - ranger
   - screen
+  - sc # CLI spreadsheets
   - tmux
-  - util-linux-user
+  - util-linux-user # provides chsh
   - vim
+  - w3m
+  - youtube-dl
+  - zathura # pdf viewer
+  - zathura-plugins-all
+  - zathura-fish-completion
+  - libappindicator-gtk3 # needed for discord?
+
+  # system monitors
+  - htop
+  - glances
+  - bpytop
+
+  # emulators
+  - retroarch
+  - mednafen
+
+  # probably eventually pick one
+  - geary
+  - evolution
+  - thunderbird
+
+  # copr packages
+  - neomutt
+  - youtube-viewer
 
 rpmfusion_packages:
   - discord
+  - librtmp # needed for Loop Hero
+  - steam
+
+git_repos:
+  - gjbianco/ansible-devbox
+
+  # private
+  - RedHatTraining/flamel-container
+  # - RedHatTraining/DO400
 
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
 dotfiles_files:
+  - .config/bat
   - .config/fish
   - .config/lf
+  # - .config/neomutt
   - .config/nvim
+  - .config/sway
+  - .config/waybar
   - .alacritty.yml
   - .ansible.cfg
   - .editorconfig
