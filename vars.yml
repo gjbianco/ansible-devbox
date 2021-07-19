@@ -7,16 +7,21 @@ lf_version: r20
 lf_arch: linux-amd64
 
 packages:
+  # headed machine
   - alacritty
+  # - brightnessctl
+  - gnome-tweaks
+  - gparted
+  - sway
+
   - ansible
-  - brightnessctl
+  - bat
   - fish
   - git
-  - gnome-tweaks
   - golang
-  - gparted
   - htop
   - httpie
+  - hwinfo
   - irssi
   - mosh
   - neovim
@@ -25,6 +30,7 @@ packages:
   - ranger
   - screen
   - tmux
+  - util-linux-user
   - vim
 
 rpmfusion_packages:
