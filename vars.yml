@@ -30,6 +30,7 @@ packages:
   - darktable-tools-noise
   - wl-clipboard
   - dnf-plugins-core # needed for brave
+  - xrandr # needed for Slay the Spire
 
   # sway wm
   - dunst # notifications
