@@ -17,7 +17,6 @@ Currently used for `Fedora Workstation 33`.
 ** Installs https://support.1password.com/getting-started-linux/[1password]†
 * Initializes user's home directory
 ** Adds directories (e.g. `~/bin` and `~/code`)
-** Installs the https://bitwarden.com/help/article/cli/[Bitwarden CLI]†
 * Creates symlinks for my https://github.com/gjbianco/dotfiles[personal dotfiles]†
 
 NOTE: `†` indicates it will not run by default.
