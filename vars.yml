@@ -31,6 +31,7 @@ packages:
   - wl-clipboard
   - dnf-plugins-core # needed for brave
   - xrandr # needed for Slay the Spire
+  - lutris
 
   # sway wm
   - dunst # notifications
