@@ -148,12 +148,6 @@
         path: /home/{{ username }}/{{ item }}
         state: directory
       loop: "{{ home_directories }}"
-    - name: bitwarden cli installed
-      unarchive:
-        src: https://vault.bitwarden.com/download/?app=cli&platform=linux
-        dest: /home/{{ username }}/bin
-        remote_src: yes
-        mode: +x
 
 - name: dotfiles symlinked
   hosts: all
