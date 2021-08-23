@@ -23,6 +23,7 @@ packages:
   - gimp
   - gnome-tweaks
   - gparted
+  - lutris
   - mpv # video player
   - firefox
   # - firefox-wayland
