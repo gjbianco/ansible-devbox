@@ -11,7 +11,7 @@ lf_arch: linux-amd64
 cmdocker_version: 2021-03-08_1041
 
 copr_repos:
-  - [flatcap, neomutt]       # flatcap/neomutt
+  # - [flatcap, neomutt]       # flatcap/neomutt
   - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
 
 packages:
@@ -29,8 +29,11 @@ packages:
   - darktable # FOSS lightroom
   - darktable-tools-noise
   - wl-clipboard
-  - dnf-plugins-core # needed for brave
-  - xrandr # needed for Slay the Spire
+
+  # dependencies         # needed for:
+  - dnf-plugins-core     # brave
+  - xrandr               # Slay the Spire
+  - libappindicator-gtk3 # discord?
 
   # sway wm
   - dunst # notifications
@@ -49,33 +52,35 @@ packages:
   - podman
   - asciidoctor
 
-  - bat
-  - hugo
-  - calcurse
-  - fish
-  - git
+  # tools
+  - bat      # better cat
+  - calcurse # curses calendar
+  - exa      # better ls
+  - fish     # better bash
+  - hugo     # static site renderer
+  - git      # better svn
   - golang
-  - httpie
+  - httpie   # better curl
   - hwinfo
   - irssi
-  - lm_sensors
-  - mosh
-  - neovim
+  - mosh     # better ssh
+  - neovim   # better vim
   - nodejs
-  - pamix # pulseaudio CLI mixer
-  - ranger
-  - nnn
+  - pamix    # pulseaudio CLI mixer
   - screen
-  - sc # CLI spreadsheets
-  - tmux
-  - util-linux-user # provides chsh
+  - sc       # CLI spreadsheets
+  - tmux     # better screen
   - vim
   - w3m
   - youtube-dl
-  - zathura # pdf viewer
+  - zathura  # pdf viewer
   - zathura-plugins-all
   - zathura-fish-completion
-  - libappindicator-gtk3 # needed for discord?
+  # - ranger
+  # - nnn
+
+  - lm_sensors
+  - util-linux-user # provides chsh
 
   # system monitors
   - htop
@@ -92,7 +97,7 @@ packages:
   - thunderbird
 
   # copr packages
-  - neomutt
+  # - neomutt
   - youtube-viewer
 
 rpmfusion_packages:
