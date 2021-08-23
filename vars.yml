@@ -71,6 +71,7 @@ packages:
   - screen
   - sc       # CLI spreadsheets
   - tmux     # better screen
+  - tokei    # better sloc
   - vim
   - w3m
   - youtube-dl
