@@ -12,7 +12,7 @@ cmdocker_version: 2021-03-08_1041
 
 copr_repos:
   # - [flatcap, neomutt]       # flatcap/neomutt
-  - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
+  # - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
 
 packages:
   # headed machine
@@ -58,8 +58,11 @@ packages:
   - calcurse # curses calendar
   - exa      # better ls
   - fish     # better bash
+  - fzf      # fuzzy find tool
   - hugo     # static site renderer
   - git      # better svn
+  - gitk     # git GUI
+  - tig      # curses git viewer
   - golang
   - httpie   # better curl
   - hwinfo
@@ -81,6 +84,7 @@ packages:
   # - ranger
   # - nnn
 
+  - fuse-sshfs
   - lm_sensors
   - util-linux-user # provides chsh
 
