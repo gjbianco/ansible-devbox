@@ -16,16 +16,16 @@ copr_repos:
 
 packages:
   # headed machine
-  - alacritty
+  - kitty
   # - brightnessctl
   # - cool-retro-term
-  # - krita # painting program
+  - krita # painting program
   - gimp
   - gnome-tweaks
   - gparted
   - lutris
   - mpv # video player
-  - firefox
+  # - firefox
   # - firefox-wayland
   - darktable # FOSS lightroom
   - darktable-tools-noise
