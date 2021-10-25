@@ -67,6 +67,7 @@ packages:
   - httpie   # better curl
   - hwinfo
   - irssi
+  - jid      # json incremental digger
   - mosh     # better ssh
   - neovim   # better vim
   - nodejs
