@@ -25,6 +25,7 @@ packages:
   - gparted
   - lutris
   - mpv # video player
+  - cmus # CLI music
   # - firefox
   # - firefox-wayland
   - darktable # FOSS lightroom
