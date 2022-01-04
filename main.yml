@@ -15,14 +15,14 @@
   gather_facts: no
   vars_files: [vars.yml]
   tasks:
-    - name: COPR repos enabled
-      command:
-        cmd: dnf copr enable -y {{ item[0] }}/{{ item[1] }}
-        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:{{ item[0] }}:{{ item[1] }}.repo
-        warn: false # dnf module does not support COPR
-      loop: "{{ copr_repos }}"
-    - name: system up to date
-      dnf: name=* state=latest update_cache=yes
+    # - name: COPR repos enabled
+    #   command:
+    #     cmd: dnf copr enable -y {{ item[0] }}/{{ item[1] }}
+    #     creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:{{ item[0] }}:{{ item[1] }}.repo
+    #     warn: false # dnf module does not support COPR
+    #   loop: "{{ copr_repos }}"
+    # - name: system up to date
+    #   dnf: name=* state=latest update_cache=yes
     - name: unwanted packages removed
       dnf:
         name: fedora-chromium-config
@@ -56,6 +56,26 @@
       loop:
         - packagekit
         - raid-check.timer
+
+- name: plex installed
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: plex repo added
+      copy:
+        dest: /etc/yum.repos.d/plex.repo
+        content: |
+          [Plexrepo]
+          name=plexrepo
+          baseurl=https://downloads.plex.tv/repo/rpm/$basearch/
+          enabled=1
+          gpgkey=https://downloads.plex.tv/plex-keys/PlexSign.key
+          gpgcheck=1
+    - name: plex package installed
+      dnf:
+        name: plexmediaserver
+        update_cache: yes
 
 - name: brave browser installed
   hosts: all
