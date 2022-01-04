@@ -1,0 +1,48 @@
+username: guy
+home_directories:
+  - bin
+  - code
+
+packages:
+  # work
+  - pre-commit
+  - ansible
+  - podman
+  - asciidoctor
+
+  # tools
+  - bat      # better cat
+  - exa      # better ls
+  - fish     # better bash
+  - hugo     # static site renderer
+  - git      # better svn
+  - tig      # curses git viewer
+  - httpie   # better curl
+  - htop     # better top
+  - irssi
+  - jid      # json incremental digger
+  - mosh     # better ssh
+  - neovim   # better vim
+  - nodejs
+  - sc       # CLI spreadsheets
+  - tmux     # better screen
+  - tokei    # better sloc
+  - vim
+  - w3m
+  - youtube-dl
+  - nnn
+
+  - util-linux-user # provides chsh
+
+dotfiles_repo: "https://github.com/gjbianco/dotfiles"
+dotfiles_repo_local_destination: "~/bin/dotfiles"
+dotfiles_files:
+  - .config/bat
+  - .config/fish
+  - .config/nvim
+  - .ansible.cfg
+  - .editorconfig
+  - .gitconfig
+  - .gitignore_global
+  - .tmux.conf
+  - .vimrc

@@ -1,0 +1,50 @@
+---
+- name: system initialized
+  hosts: all
+  # become: yes
+  gather_facts: no
+  vars_files: [vps_vars.yml]
+  tasks:
+    - name: system up to date
+      dnf: name=* state=latest update_cache=yes
+    - name: packages installed
+      dnf:
+        name: "{{ packages }}"
+        state: present
+    - name: user created
+      user:
+        name: "{{ username }}"
+        state: present
+        shell: /usr/bin/fish
+        generate_ssh_key: yes
+        groups: wheel
+    - name: unnecessary services disabled
+      service:
+        name: "{{ item }}"
+        state: stopped
+        enabled: no
+      loop:
+        - packagekit
+        - raid-check.timer
+
+- name: /home initialized
+  hosts: all
+  become: yes
+  become_user: "{{ username }}"
+  gather_facts: no
+  vars_files: [vps_vars.yml]
+  tasks:
+    - name: home directories exist
+      file:
+        path: /home/{{ username }}/{{ item }}
+        state: directory
+      loop: "{{ home_directories }}"
+
+- name: dotfiles symlinked
+  hosts: all
+  become: yes
+  become_user: "{{ username }}"
+  gather_facts: no
+  vars_files: [vps_vars.yml]
+  roles:
+    - geerlingguy.dotfiles
