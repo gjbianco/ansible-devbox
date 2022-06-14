@@ -17,8 +17,6 @@ copr_repos:
 packages:
   # headed machine
   - kitty
-  # - brightnessctl
-  # - cool-retro-term
   - krita # painting program
   - gimp
   - gnome-tweaks
@@ -26,8 +24,6 @@ packages:
   - lutris
   - mpv # video player
   - cmus # CLI music
-  # - firefox
-  # - firefox-wayland
   - darktable # FOSS lightroom
   - darktable-tools-noise
   - wl-clipboard
@@ -46,7 +42,6 @@ packages:
   - nm-connection-editor
   - msimonson-anonymouspro-fonts
   - squeekboard # OSK
-  # - xdg-desktop-portal-wlr # for screenshare?
 
   # work
   - pre-commit
@@ -56,53 +51,42 @@ packages:
 
   # tools
   - bat      # better cat
-  - calcurse # curses calendar
-  - exa      # better ls
   - fish     # better bash
   - fzf      # fuzzy find tool
-  - hugo     # static site renderer
   - git      # better svn
   - gitk     # git GUI
+  - hugo     # static site renderer
   - tig      # curses git viewer
-  - golang
   - httpie   # better curl
   - hwinfo
-  - irssi
   - jid      # json incremental digger
   - mosh     # better ssh
   - neovim   # better vim
   - nodejs
+  - nnn      # better ranger
   - pamix    # pulseaudio CLI mixer
-  - screen
   - sc       # CLI spreadsheets
   - tmux     # better screen
   - tokei    # better sloc
-  - vim
+  - vim      # better emacs
   - w3m
   - youtube-dl
   - zathura  # pdf viewer
   - zathura-plugins-all
   - zathura-fish-completion
-  # - ranger
-  # - nnn
 
   - fuse-sshfs
   - lm_sensors
   - util-linux-user # provides chsh
 
   # system monitors
+  - s-tui
   - htop
-  - glances
-  - bpytop
-
-  # emulators
-  - retroarch
-  - mednafen
 
   # probably eventually pick one
   - geary
   - evolution
-  - thunderbird
+  # - thunderbird
 
   # copr packages
   # - neomutt
