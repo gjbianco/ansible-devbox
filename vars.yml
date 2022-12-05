@@ -3,35 +3,36 @@ home_directories:
   - bin
   - code
 
-bluejeans_version: 2.21.2
+# bluejeans_version: 2.21.2
 
-lf_version: r20
-lf_arch: linux-amd64
+# lf_version: r20
+# lf_arch: linux-amd64
 
-cmdocker_version: 2021-03-08_1041
+# cmdocker_version: 2021-03-08_1041
 
-copr_repos:
+# copr_repos:
   # - [flatcap, neomutt]       # flatcap/neomutt
   # - [itsuki, Youtube-viewer] # itsuki/Youtube-viewer
 
 packages:
   # headed machine
   # - kitty
-  - krita # painting program
+  # - krita # painting program
+  - alacritty
   - firefox
   - gimp
-  - gnome-tweaks
+  # - gnome-tweaks
   - gparted
-  - lutris
+  # - lutris
   - mpv # video player
-  - cmus # CLI music
-  - darktable # FOSS lightroom
-  - darktable-tools-noise
+  # - cmus # CLI music
+  # - darktable # FOSS lightroom
+  # - darktable-tools-noise
   - wl-clipboard
   - nut # UPS monitor
 
   # dependencies         # needed for:
-  - dnf-plugins-core     # brave
+  # - dnf-plugins-core     # brave
   - xrandr               # Slay the Spire
   - libappindicator-gtk3 # discord?
 
@@ -42,8 +43,8 @@ packages:
   - swaylock
   - waybar
   - nm-connection-editor
-  - msimonson-anonymouspro-fonts
-  - squeekboard # OSK
+  # - msimonson-anonymouspro-fonts
+  # - squeekboard # OSK
   - playerctl # control multimedia CLI
   - NetworkManager-tui
   - pavucontrol # control audio
@@ -66,13 +67,13 @@ packages:
   - hwinfo
   - jid      # json incremental digger
   - mosh     # better ssh
-  - neovim   # better vim
+  # - neovim   # better vim
   - nodejs
   - nnn      # better ranger
   # - pamix    # pulseaudio CLI mixer
   - sc       # CLI spreadsheets
   - tmux     # better screen
-  - tokei    # better sloc
+  # - tokei    # better sloc
   - vim      # better emacs
   - w3m
   - youtube-dl
@@ -89,41 +90,40 @@ packages:
   - htop
 
   # probably eventually pick one
-  - geary
-  - evolution
+  # - geary
+  # - evolution
   # - thunderbird
 
   # copr packages
   # - neomutt
-  - youtube-viewer
+  # - youtube-viewer
 
 rpmfusion_packages:
   - discord
   - librtmp # needed for Loop Hero
   - steam
 
-git_repos:
-  - gjbianco/ansible-devbox
+# git_repos:
+  # - gjbianco/ansible-devbox
 
   # private
-  - RedHatTraining/flamel-container
+  # - RedHatTraining/flamel-container
   # - RedHatTraining/DO400
 
 dotfiles_repo: "https://github.com/gjbianco/dotfiles"
 dotfiles_repo_local_destination: "~/bin/dotfiles"
 dotfiles_files:
   - .config/bat
-  - .config/fish
-  - .config/lf
+  - .config/fish/
+  # - .config/lf
   # - .config/neomutt
   - .config/nvim
   - .config/sway
   - .config/waybar
-  - .alacritty.yml
+  - .config/alacritty/
   - .ansible.cfg
   - .editorconfig
   - .gitconfig
   - .gitignore_global
   - .tmux.conf
   - .vimrc
-    

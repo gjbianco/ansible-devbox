@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: repo added
+    - name: rpmfusion repo added
       include_tasks: rpmfusion_tasks.yml
       loop:
         - free
@@ -35,12 +35,12 @@
       dnf:
         name: "{{ rpmfusion_packages }}"
         state: present
-    - name: lf installed
-      unarchive:
-        src: "https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/lf-{{ lf_arch }}.tar.gz"
-        dest: /usr/bin
-        remote_src: yes
-        mode: 0755
+    # - name: lf installed
+    #   unarchive:
+    #     src: "https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/lf-{{ lf_arch }}.tar.gz"
+    #     dest: /usr/bin
+    #     remote_src: yes
+    #     mode: 0755
     - name: user created
       user:
         name: "{{ username }}"
@@ -57,35 +57,58 @@
         - packagekit
         - raid-check.timer
 
+- name: tailscale configured
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: tailscale repo added
+      get_url: 
+        url: https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+        dest: /etc/yum.repos.d/tailscale.repo
+    - name: tailscale installed
+      dnf:
+        name: tailscale
+        state: present
+    - name: tailscale service enabled
+      service:
+        name: tailscaled
+        state: started
+        enabled: yes
+
 - name: NUT configured
   hosts: all
   become: yes
   gather_facts: no
   tasks:
+    - name: NUT config directory exists
+      file:
+        path: /etc/nut
+        state: directory
     - name: UPS configuration placed
       copy:
         src: ups.conf
         dest: /etc/nut/ups.conf
 
-- name: plex installed
-  hosts: all
-  become: yes
-  gather_facts: no
-  tasks:
-    - name: plex repo added
-      copy:
-        dest: /etc/yum.repos.d/plex.repo
-        content: |
-          [Plexrepo]
-          name=plexrepo
-          baseurl=https://downloads.plex.tv/repo/rpm/$basearch/
-          enabled=1
-          gpgkey=https://downloads.plex.tv/plex-keys/PlexSign.key
-          gpgcheck=1
-    - name: plex package installed
-      dnf:
-        name: plexmediaserver
-        update_cache: yes
+# - name: plex installed
+#   hosts: all
+#   become: yes
+#   gather_facts: no
+#   tasks:
+#     - name: plex repo added
+#       copy:
+#         dest: /etc/yum.repos.d/plex.repo
+#         content: |
+#           [Plexrepo]
+#           name=plexrepo
+#           baseurl=https://downloads.plex.tv/repo/rpm/$basearch/
+#           enabled=1
+#           gpgkey=https://downloads.plex.tv/plex-keys/PlexSign.key
+#           gpgcheck=1
+#     - name: plex package installed
+#       dnf:
+#         name: plexmediaserver
+#         update_cache: yes
 
 # - name: brave browser installed
 #   hosts: all
@@ -108,63 +131,63 @@
 #         state: present
 #         name: brave-browser
 
-- name: github CLI installed
-  hosts: all
-  become: yes
-  gather_facts: no
-  tasks:
-    # TODO fix once feature added for dnf module: https://github.com/ansible/ansible/issues/46963
-    - name: gh repo installed
-      command:
-        cmd: dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-        warn: false
-      args:
-        creates: /etc/yum.repos.d/gh-cli.repo
-    - name: gh package installed
-      dnf:
-        state: present
-        name: gh
+# - name: github CLI installed
+#   hosts: all
+#   become: yes
+#   gather_facts: no
+#   tasks:
+#     # TODO fix once feature added for dnf module: https://github.com/ansible/ansible/issues/46963
+#     - name: gh repo installed
+#       command:
+#         cmd: dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+#         warn: false
+#       args:
+#         creates: /etc/yum.repos.d/gh-cli.repo
+#     - name: gh package installed
+#       dnf:
+#         state: present
+#         name: gh
 
-- name: 1password installed (https://support.1password.com/getting-started-linux/)
-  hosts: all
-  become: yes
-  gather_facts: no
-  tasks:
-    - name: key imported
-      rpm_key:
-        state: present
-        key: https://downloads.1password.com/linux/keys/1password.asc
-    - name: repo added
-      copy:
-        dest: /etc/yum.repos.d/1password.repo
-        content: |
-          [1password]
-          name=1Password
-          baseurl=https://downloads.1password.com/linux/rpm
-          enabled=1
-          gpgcheck=1
-          repo_gpgcheck=1
-          gpgkey=https://downloads.1password.com/linux/keys/1password.asc
-    - name: package installed
-      dnf:
-        name: 1password
-        state: present
-        update_cache: yes
+# - name: 1password installed (https://support.1password.com/getting-started-linux/)
+#   hosts: all
+#   become: yes
+#   gather_facts: no
+#   tasks:
+#     - name: key imported
+#       rpm_key:
+#         state: present
+#         key: https://downloads.1password.com/linux/keys/1password.asc
+#     - name: repo added
+#       copy:
+#         dest: /etc/yum.repos.d/1password.repo
+#         content: |
+#           [1password]
+#           name=1Password
+#           baseurl=https://downloads.1password.com/linux/rpm
+#           enabled=1
+#           gpgcheck=1
+#           repo_gpgcheck=1
+#           gpgkey=https://downloads.1password.com/linux/keys/1password.asc
+#     - name: package installed
+#       dnf:
+#         name: 1password
+#         state: present
+#         update_cache: yes
 
-- name: bluejeans installed
-  hosts: all
-  become: yes
-  gather_facts: no
-  vars_files: [vars.yml]
-  tasks:
-    - name: key imported
-      rpm_key:
-        state: present
-        key: https://swdl.bluejeans.com/desktop-app/linux/bluejeans_pubkey.gpg
-    - name: package installed
-      dnf:
-        name: https://swdl.bluejeans.com/desktop-app/linux/{{ bluejeans_version }}/BlueJeans_{{ bluejeans_version }}.1.rpm
-        state: present
+# - name: bluejeans installed
+#   hosts: all
+#   become: yes
+#   gather_facts: no
+#   vars_files: [vars.yml]
+#   tasks:
+#     - name: key imported
+#       rpm_key:
+#         state: present
+#         key: https://swdl.bluejeans.com/desktop-app/linux/bluejeans_pubkey.gpg
+#     - name: package installed
+#       dnf:
+#         name: https://swdl.bluejeans.com/desktop-app/linux/{{ bluejeans_version }}/BlueJeans_{{ bluejeans_version }}.1.rpm
+#         state: present
 
 - name: /home initialized
   hosts: all
