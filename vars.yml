@@ -34,6 +34,7 @@ packages:
   - ansible
   - podman
   - asciidoctor
+  - python3-dev # for dynolabs
 
   # tools
   - bat      # better cat
